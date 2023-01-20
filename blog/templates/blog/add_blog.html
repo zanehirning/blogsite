@@ -1,0 +1,12 @@
+<title> Add Blog </title>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'blog/style.css' %}">
+
+<h1>Add Blog</h1>
+<hr>
+
+<form method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button> Add Post </button>

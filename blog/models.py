@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.urls import reverse
 
 class Blog(models.Model):
+    image = models.ImageField(upload_to='images/')
     title = models.CharField(max_length=400)
     author = models.CharField(max_length=255)
     content = models.TextField()
