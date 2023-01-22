@@ -17,12 +17,10 @@ class BlogForm(forms.ModelForm):
 class CommentsForm(forms.ModelForm):
     class Meta:
         model=Comments
-        blog = Blog
-        fields = ('blog', 'commenter', 'email', 'content' ,'posted')
+
+        fields = ('commenter', 'email', 'content' )
         widgets = {
-            'blog': blog.id,
             'commenter': forms.TextInput(attrs={'class': 'form-control'}),
             'email': forms.EmailInput(attrs={'class': 'form-control'}),
             'content': forms.Textarea(attrs={'class': 'form-control'}),
-            'posted': datetime.now(),
         }
