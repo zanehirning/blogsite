@@ -76,14 +76,15 @@
                     <div class="container bg-white pt-5">
                         <div class="row blog-item px-3 pb-5">
                             <div class="col-md-5">
-                                <img class="img-fluid mb-4 mb-md-0" src="img/blog-1.jpg" alt="Image">
+                                <img class="img-fluid mb-4 mb-md-0" src="{{ blog.image }}" alt="Image">
+                                <p>{{blog.image}}</p>
                             </div>
                             <div class="col-md-7">
-                                <h3 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">Lorem ipsum dolor sit amet</h3>
+                                <h3 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">{{blog.title}}t</h3>
                                 <div class="d-flex mb-3">
-                                    <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> 01-Jan-2045</small>
+                                    <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> {{blog.posted}}</small>
                                     <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Web Design</small>
-                                    <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15 Comments</small>
+                                    <small class="mr-2 text-muted"><i class="fa fa-comments"></i> {{blog.all.comments.all}}</small>
                                 </div>
                                 <p>
                                     {{blog.content|truncatechars:100}}
@@ -94,7 +95,7 @@
                     </div>
                 {% endfor %}
             {% else %}
-                <h1>No Blog Found</h1>
+                <h1>No Blogs available</h1>
             {% endif %}
                 <!-- Blog List End -->
                 
@@ -115,12 +116,8 @@
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-
-        <!-- Contact Javascript File -->
-        <script src="mail/jqBootstrapValidation.min.js"></script>
-        <script src="mail/contact.js"></script>
+        
+        
 
         <!-- Template Javascript -->
         <script src="{% static 'blog/script.js' %}"></script>

@@ -3,8 +3,11 @@ from django.views import generic
 from .models import Blog, Comments
 
 # Create your views here.
-def home(request):
-    return render(request, "blog/home.html")
+class HomeView(generic.ListView):
+    template_name="blog/home.html"
+    context = "blog_list"
+    def get_queryset(self):
+        return Blog.objects.order_by('-posted')
 
 class entry(generic.DetailView):
     model = Blog
