@@ -4667,7 +4667,7 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 .alert-warning {
   color: #856404;
-  background-color: #2121213cd;
+  background-color: #212121;
   border-color: #ffeeba;
 }
 .alert-warning hr {
@@ -9668,7 +9668,7 @@ h3 {
   width: 100%;
   float: left;
   padding: 30px;
-  background: #212121fff;
+  background: #212121;
 }
 
 .wrapper .sidebar-icon {
@@ -9871,8 +9871,5 @@ h3 {
   padding: 0;
   list-style-type: none;
 }
-#627d98
-#121212
-#121212
 
 /*# sourceMappingURL=style.css.map */

@@ -17,4 +17,4 @@ class Comments(models.Model):
     posted = models.DateTimeField(auto_now_add=True)
     def get_absolute_url(self):
         return reverse('blog:index')
-# Create your models here.
+

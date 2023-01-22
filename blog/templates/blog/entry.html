@@ -1,14 +1,169 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entry</title>
-    
-</head>
+    <head>
+        <meta charset="utf-8">
+        <title>Zane's Blog Entry {{blog.id}}</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:300;400;600;700;800&display=swap" rel="stylesheet">
+
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        
+    </head>
+
 <body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <div class="sidebar-text d-flex flex-column h-100 justify-content-center text-center">
+                <img class="mx-auto d-block w-75 bg-primary img-fluid rounded-circle mb-4 p-3" src="{% static 'blog/img/seniorpic.jpg' %}" alt="Image">
+                <h1 class="font-weight-bold">Zane Hirning</h1>
+                <p class="mb-4">
+                    Currently a Junior at Utah State University pursuing a degree in Computer Science. I have many skills in different languages, and I am looking to take on an internship/job to broaden the list of things I am capable of.                </p>
+                <div class="d-flex justify-content-center mb-5">
+                    <a class="btn btn-outline-primary mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-primary mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-primary mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-primary mr-2" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="sidebar-icon d-flex flex-column h-100 justify-content-center text-right">
+                <i class="fas fa-2x fa-angle-double-right text-primary"></i>
+            </div>
+        </div>
+        <div class="content">
+            <!-- Navbar Start -->
+            <div class="container p-0">
+                <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
+                    <a href="" class="navbar-brand d-block d-lg-none">Navigation</a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav m-auto">
+                            <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>
+                            <a href="" class="nav-item nav-link">Post</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!-- Navbar End -->
+
+            <!-- Page Header Start -->
+            <div class="container py-5 px-2 bg-primary">
+                <div class="row py-5 px-4">
+                    <div class="col-sm-6 text-center text-md-left">
+                        <h1 class="mb-3 mb-md-0 text-white text-uppercase font-weight-bold">Blog Detail</h1>
+                    </div>
+                    <div class="col-sm-6 text-center text-md-right">
+                        <div class="d-inline-flex pt-2">
+                            <h4 class="m-0 text-white"><a class="text-white" href="">Home</a></h4>
+                            <h4 class="m-0 text-white px-2">/</h4>
+                            <h4 class="m-0 text-white">My Blog</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page Header End -->
+
+            <!-- Blog Detail Start -->
+            <div class="container py-5 px-2 bg-white">
+                <div class="row px-4">
+                    <div class="col-12">
+                        <img class="img-fluid mb-4" src="{{ blog.image }}" alt="{{blog.image}}">
+                        <h2 class="mb-3 font-weight-bold">{{blog.title}}</h2>
+                        <div class="d-flex">
+                            <p class="mr-3 text-muted"><i class="fa fa-calendar-alt"></i> {{blog.posted}}</p>
+                            <p class="mr-3 text-muted"><i class="fa fa-comments"></i> {{blog.all.comments.all}}</p>
+                        </div>
+                        <p>{{blog.content}}</p>
+                    </div>
+
+                    <!--<div class="col-12 py-4">
+                        <div class="btn-group btn-group-lg w-100">
+                            <button type="button" class="btn btn-outline-primary"><i class="fa fa-angle-left mr-2"></i> Previous</button>
+                            <button type="button" class="btn btn-outline-primary">Next<i class="fa fa-angle-right ml-2"></i></button>
+                        </div> 
+                    </div>-->
+                    <div class="col-12 py-4">
+                        <h3 class="mb-4 font-weight-bold">{{blog.all.comments.all}} Comments</h3>
+                        
+                        {% if not blog.comments.all %}
+	                    	<h4> No comments </h4>
+	                    {% else %}
+                            {% for comment in blog.comments.all %}
+                                <div class="media mb-4">
+                                    <div class="media-body">
+                                        <h4>{{comment.commenter}} - {{comment.email}} - <small><i>{{comment.posted}}</i></small></h4>
+                                        <p>
+                                            {{comment.content}}
+                                        </p>
+                                        <!--<button class="btn btn-sm btn-light">Reply</button>-->
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        
+                    </div>
+                    <div class="col-12">
+                        <h3 class="mb-4 font-weight-bold">Leave a comment</h3>
+                        <form>
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                {{form.commenter}}
+                                <input type="text" class="form-control" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                {{form.email}}
+                                <input type="email" class="form-control" id="email">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                {{form.content}}
+                                <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Leave Comment" class="btn btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Blog Detail End -->
+                
+            <!-- Footer Start -->
+            <div class="container py-4 bg-secondary text-center">
+                <p class="m-0 text-white">
+                    &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+                </p>
+            </div>
+            <!-- Footer End -->
+        </div>
+    </div>
+        
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
     
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
 </body>
 </html>

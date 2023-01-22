@@ -83,13 +83,12 @@
                                 <h3 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">{{blog.title}}t</h3>
                                 <div class="d-flex mb-3">
                                     <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> {{blog.posted}}</small>
-                                    <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Web Design</small>
                                     <small class="mr-2 text-muted"><i class="fa fa-comments"></i> {{blog.all.comments.all}}</small>
                                 </div>
                                 <p>
                                     {{blog.content|truncatechars:100}}
                                 </p>
-                                <a class="btn btn-link p-0" href="">Read More <i class="fa fa-angle-right"></i></a>
+                                <a class="btn btn-link p-0" href="{% url 'entry' blog.id %}">Read More <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
