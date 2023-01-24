@@ -20,9 +20,7 @@ class entry(generic.DetailView):
         return Blog.objects.order_by('-posted')
 
 def create_comment(request, pk):
-    print(request.POST)
     blog = get_object_or_404(Blog, pk=pk)
-    print(blog.id)
     name = request.POST.get('name')
     email = request.POST.get('email')
     message = request.POST.get('message')
@@ -30,3 +28,17 @@ def create_comment(request, pk):
         comment = Comments(blog=blog, commenter=name, email=email, content=message)
         comment.save()
         return redirect(reverse('entry', args=[pk]))
+
+def create_blog(request):
+    if request.method == 'POST':
+        image = request.POST.get('image')
+        title = request.POST.get('title')
+        author = request.POST.get('author')
+        content = request.POST.get('content')
+        if image and title and author and content:
+            blog = Blog(image=image, title=title, author=author, content=content, posted=datetime.now())
+            blog.save()
+            return redirect(reverse('home'))
+    else:
+        form = BlogForm()
+    return render(request, 'blog/create_blog.html', {'form': form})

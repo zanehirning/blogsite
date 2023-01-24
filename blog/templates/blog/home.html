@@ -45,7 +45,7 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav m-auto">
                             <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>
-                            <a href="" class="nav-item nav-link">Post</a>
+                            <a href="{% url 'create_blog' %}" class="nav-item nav-link">Post</a>
                         </div>
                     </div>
                 </nav>
@@ -80,7 +80,7 @@
                                 <p>{{blog.image}}</p>
                             </div>
                             <div class="col-md-7">
-                                <h3 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">{{blog.title}}t</h3>
+                                <h3 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">{{blog.title}}</h3>
                                 <div class="d-flex mb-3">
                                     <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> {{blog.posted}}</small>
                                     <small class="mr-2 text-muted"><i class="fa fa-comments"></i> {{blog.all.comments.all}}</small>
