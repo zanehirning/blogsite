@@ -24,10 +24,8 @@
                 <p class="mb-4">
                     Currently a Junior at Utah State University pursuing a degree in Computer Science. I have many skills in different languages, and I am looking to take on an internship/job to broaden the list of things I am capable of.                </p>
                 <div class="d-flex justify-content-center mb-5">
-                    <a class="btn btn-outline-primary mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-primary mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-primary mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-primary mr-2" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-primary mr-2" href="https://github.com/zanehirning"><i class="fab fa-github"></i></a>
+                    <a class="btn btn-outline-primary mr-2" href="https://www.linkedin.com/in/zane-hirning-a5730b232"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="sidebar-icon d-flex flex-column h-100 justify-content-center text-right">
@@ -56,7 +54,7 @@
             <div class="container py-5 px-2 bg-primary">
                 <div class="row py-5 px-4">
                     <div class="col-sm-6 text-center text-md-left">
-                        <h1 class="mb-3 mb-md-0 text-white text-uppercase font-weight-bold">My Blog</h1>
+                        <h1 class="mb-3 mb-md-0 text-white text-uppercase font-weight-bold">Zane's Blog</h1>
                     </div>
                     <div class="col-sm-6 text-center text-md-right">
                         <div class="d-inline-flex pt-2">
@@ -76,17 +74,16 @@
                     <div class="container bg-white pt-5">
                         <div class="row blog-item px-3 pb-5">
                             <div class="col-md-5">
-                                <img class="img-fluid mb-4 mb-md-0" src="{{ blog.image }}" alt="Image">
-                                <p>{{blog.image}}</p>
+                                <img class="img-fluid mb-4 mb-md-0" src="{{blog.image.url}}" alt="Image">
                             </div>
                             <div class="col-md-7">
-                                <h3 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">{{blog.title}}</h3>
+                                <h4 class="mt-md-3 px-md-6 mb-2 py-2 bg-white font-weight-bold">{{blog.title}}</h4>
                                 <div class="d-flex mb-3">
                                     <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> {{blog.posted}}</small>
                                     <small class="mr-2 text-muted"><i class="fa fa-comments"></i> {{blog.all.comments.all}}</small>
                                 </div>
                                 <p>
-                                    {{blog.content|truncatechars:100}}
+                                    {{blog.content|truncatechars:300}}
                                 </p>
                                 <a class="btn btn-link p-0" href="{% url 'entry' blog.id %}">Read More <i class="fa fa-angle-right"></i></a>
                             </div>
@@ -102,7 +99,7 @@
                 <!-- Footer Start -->
                 <div class="container py-4 bg-secondary text-center">
                     <p class="m-0 text-white">
-                        &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+                        &copy; <a class="text-white font-weight-bold" href="#">Zane's Blog</a>. All Rights Reserved. Designed by <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
                     </p>
                 </div>
                 <!-- Footer End -->
